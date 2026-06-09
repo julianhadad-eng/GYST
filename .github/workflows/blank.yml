@@ -1,0 +1,59 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+
+                    - name: Codex Action
+  # You may pin to the exact commit or the version.
+  # uses: icoretech/codex-action@acc3e3938be3b2acd91cfe106ebebe06b0712c72
+  uses: icoretech/codex-action@v0.2.1
+  with:
+    # Instructions for Codex (e.g., "Summarize these changes for operators")
+    prompt: 
+    # Data to process (e.g., changelog content). Appended after the prompt with a separator.
+    input_text: # optional, default is 
+    # OpenAI API key. Mutually exclusive with codex_config.
+    openai_api_key: # optional, default is 
+    # Base64-encoded config.toml from a prior device-auth session. Mutually exclusive with openai_api_key.
+    codex_config: # optional, default is 
+    # codex-docker image version tag
+    image_version: # optional, default is 0.114.0
+    # Model override (passed to codex exec --model)
+    model: # optional, default is 
+    # Reasoning effort level (minimal, low, medium, high, xhigh). Passed via model_reasoning_effort config override.
+    reasoning_effort: # optional, default is 
+    # Max seconds for codex execution (default: 300)
+    timeout: # optional, default is 300
+          
